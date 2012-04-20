@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<design version="2">  
+   <namespaces>  
+     <namespace prefix="encore" uri="http://code.google.com/p/flex-encore-lib/"/>  
+   </namespaces>  
+  
+   <categories>  
+       <category id="encoreLibControl" label="分页组件" defaultExpand="true"/>  
+   </categories>  
+      
+   <components>  
+  
+        <component id="org.encore.lib.components.PageDividerBar"  
+                   name="org.encore.lib.components.PageDividerBar"   
+                   namespace="encore"   
+                   category="encoreLibControl">  
+        </component>  
+   </components>  
+</design>  

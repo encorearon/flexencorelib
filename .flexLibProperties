@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
+  <includeClasses>
+    <classEntry path="org.encore.lib.components.pagedivide.PageDividerEvent"/>
+  </includeClasses>
+  <includeResources>
+    <resourceEntry destPath="design.xml" sourcePath="design.xml"/>
+    <resourceEntry destPath="mainfest.xml" sourcePath="mainfest.xml"/>
+  </includeResources>
+  <namespaceManifests>
+    <namespaceManifestEntry manifest="mainfest.xml" namespace="http://code.google.com/p/flex-encore-lib/"/>
+  </namespaceManifests>
+</flexLibProperties>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!---
+<b>PageDivideSimpleButton.mxml</b>
+<p>Please describe this MXML file in brief.</p>
+<p>Create at 2012-3-5 . SCUT Ensave.</p>
+@author 叶翼安
+-->
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="20" height="20" buttonMode="true" click="clickHandler(event)" currentState="Normal"
+		 rollOut="rollOutHandler(event)" rollOver="rollOverHandler(event)">
+	<s:states>
+		<s:State name="Normal"/>
+		<s:State name="Over"/>
+		<s:State name="Toggle"/>
+	</s:states>
+	<s:transitions>
+		<s:Transition autoReverse="true" fromState="Normal" toState="*">
+			<s:Fade alphaFrom="0"  alphaTo="0.6"  target="{styleDropShadow}"/>
+		</s:Transition>
+		<s:Transition autoReverse="true" fromState="*" toState="Normal">
+			<s:Fade alphaFrom="0.6"  alphaTo="0"  target="{styleDropShadow}"/>
+		</s:Transition>
+	</s:transitions>
+	<fx:Script>
+		<![CDATA[
+			private var _text:String = "";
+			
+			
+			[Bindable]
+			public function get text():String
+			{
+				return _text;
+			}
+			
+			public function set text(value:String):void
+			{
+				_text = value;
+			}
+			
+			public function resetButton():void
+			{
+				currentState = "Normal";
+			}
+			public function setToggle():void
+			{
+				currentState ="Toggle";
+			}
+			
+			protected function clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+/* 				currentState = "Toggle"; */
+			}
+			
+			protected function rollOverHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				if(currentState != "Toggle")
+				{
+					currentState = "Over";
+				}
+				
+			}
+			
+			protected function rollOutHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				if(currentState != "Toggle")
+				{
+					currentState = "Normal";
+				}
+				
+			}
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<s:Rect width="100%" height="100%" radiusX="3" radiusY="3" excludeFrom="Toggle">
+		<s:fill>
+			<s:SolidColor color="#000000" alpha="0.2"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect  top="1" right="1" left="1" bottom="1"  radiusX="3" radiusY="3">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry color="#FFFFFF"/>
+				<s:GradientEntry color="#F1F1F1" ratio="0.1"/>
+				<s:GradientEntry color="#F1F1F1"/>
+				<s:GradientEntry color="#e1e1e1"/>
+			</s:LinearGradient>
+		</s:fill>
+		<s:filters>
+			<s:DropShadowFilter id="styleDropShadow" color="#000000" alpha="0.6" inner.Toggle="true" inner.Over="false" excludeFrom="Normal"  distance="1"/>
+		</s:filters>
+	</s:Rect>
+	<s:Label horizontalCenter="0" text="{text}" verticalCenter="0"
+			 text.Normal="{text}"
+			 horizontalCenter.Toggle="1" verticalCenter.Toggle="1"/>
+</s:Group>

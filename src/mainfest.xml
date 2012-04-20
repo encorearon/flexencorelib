@@ -1,0 +1,4 @@
+<?xml version="1.0"?> 
+<componentPackage> 
+	<component id="PageDividerBar" class="org.encore.lib.components.PageDividerBar"/> 
+</componentPackage> 
