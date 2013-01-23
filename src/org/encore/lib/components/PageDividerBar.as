@@ -138,6 +138,8 @@ package org.encore.lib.components
 			return _currentPageIndex;
 		}
 		
+		private var bCurPageIndexCFlag:Boolean=false;
+		
 		/**
 		 *@private 
 		 */
@@ -150,13 +152,24 @@ package org.encore.lib.components
 					return;
 				}
 				else
-				{
+				{					
+					bCurPageIndexCFlag=true;
+					invalidateProperties();
 					invalidateDisplayList();
 				}
 			}
 			_currentPageIndex = value;
 		}
 
+		override public function validateProperties():void
+		{
+			super.validateProperties();
+			if(bCurPageIndexCFlag)
+			{
+				dispatchEvent(new PageDividerEvent(PageDividerEvent.INDEX_CHANGE,false,false,recordPerPage,currentPageIndex*recordPerPage));
+				bCurPageIndexCFlag=false;
+			}
+		}
 		
 		protected function createPageNumList(index:int,length:int,beganPage:int):void
 		{
@@ -289,6 +302,7 @@ package org.encore.lib.components
 			{
 				currentPageIndex = newPage-1;
 			}
+			
 		}
 		
 		private function currentPageInputEnterHandler(event:KeyboardEvent):void
@@ -428,12 +442,15 @@ package org.encore.lib.components
 						oldIndex = int(lastButton.text)-1;
 					}
 					lastButton = (pagesArray[Math.ceil(currentPageIndex-currentBegin+1)] as PageDivideSimpleButton);
-					dispatchEvent(new PageDividerEvent(PageDividerEvent.INDEX_CHANGE,false,false,recordPerPage,currentPageIndex*recordPerPage));
 				}
 				if(lastButton!=null){
 					lastButton.setToggle();
 				}
-				currentPageInput.text = (currentPageIndex+1).toString();
+				if(currentPageInput.text != (currentPageIndex+1).toString())
+				{
+					currentPageInput.text = (currentPageIndex+1).toString();
+				}
+				
 				
 			}
 			

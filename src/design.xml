@@ -6,12 +6,19 @@
   
    <categories>  
        <category id="encoreLibControl" label="分页组件" defaultExpand="true"/>  
+       <category id="encoreLibControl" label="灵活窗口" defaultExpand="true"/>  
    </categories>  
       
    <components>  
   
         <component id="org.encore.lib.components.PageDividerBar"  
                    name="org.encore.lib.components.PageDividerBar"   
+                   namespace="encore"   
+                   category="encoreLibControl">  
+        </component>  
+  
+        <component id="org.encore.lib.components.FlexibleWindow"  
+                   name="org.encore.lib.components.FlexibleWindow"   
                    namespace="encore"   
                    category="encoreLibControl">  
         </component>  
